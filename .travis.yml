@@ -1,0 +1,36 @@
+language: bash
+
+sudo: required
+
+services:
+- docker
+
+env:
+  global:
+    - PROJECT="mumble"
+    - REPOSITORY="encodeering"
+    - BRANCH="$TRAVIS_BRANCH"
+  matrix:
+    - ARCH="amd64" VARIANT="dj"
+    - ARCH="amd64" VARIANT="server"
+    - ARCH="armhf" VARIANT="dj"
+    - ARCH="armhf" VARIANT="server"
+
+install:
+- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.4
+
+before_script:
+- sudo -E bash ./module.sh "." "./setup.sh"
+
+script:
+- sudo -E bash ./module.sh "modules" "./build.sh"
+
+after_script:
+- docker images
+
+deploy:
+  script: sudo -E bash ./module.sh "." "./release.sh"
+  provider: script
+  skip_cleanup: true
+  on:
+    all_branches: true
