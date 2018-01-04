@@ -1,0 +1,7 @@
+diff --git a/Makefile b/Makefile
+index 0b12e7e..8d5edb2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6 +6 @@ mumbledj: ## Default action. Builds MumbleDJ.
+-	@env GO15VENDOREXPERIMENT="1" go build .
++	@env GO15VENDOREXPERIMENT="1" go build -v -p 1 .
