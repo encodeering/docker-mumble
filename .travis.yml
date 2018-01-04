@@ -14,19 +14,17 @@ env:
     - REPOSITORY="encodeering"
     - BRANCH="$TRAVIS_BRANCH"
   matrix:
-    - ARCH="amd64" VARIANT="dj"
-    - ARCH="amd64" VARIANT="server"
-    - ARCH="armhf" VARIANT="dj"
-    - ARCH="armhf" VARIANT="server"
+    - ARCH="amd64" VERSION="3.2.1" VARIANT="dj"
+    - ARCH="armhf" VERSION="3.2.1" VARIANT="dj"
 
 install:
-- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.4
+- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.5
 
 before_script:
-- sudo -E bash ./module.sh "." "./setup.sh"
+- if [ $VARIANT = "dj" ]; then sudo -E bash ./module.sh "." "./setup.sh" "https://github.com/matthieugrieger/mumbledj.git" "modules/$VARIANT/$PROJECT" "v$VERSION"; fi
 
 script:
-- sudo -E bash ./module.sh "modules" "./build.sh"
+- sudo -E bash ./module.sh "modules/$VARIANT" "./build.sh"
 
 after_script:
 - docker images
