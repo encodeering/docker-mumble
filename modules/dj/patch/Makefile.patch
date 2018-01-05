@@ -1,0 +1,10 @@
+diff --git a/Makefile b/Makefile
+index 0b12e7e..2591b62 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6 +6 @@ mumbledj: ## Default action. Builds MumbleDJ.
+-	@env GO15VENDOREXPERIMENT="1" go build .
++	@env GO15VENDOREXPERIMENT="1" GOBIN=/usr/local/bin go install -v -p 1 .
+@@ -23 +23 @@ install: ## Copies MumbleDJ binary to /usr/local/bin for easy execution.
+-	@cp -f mumbledj* /usr/local/bin/mumbledj
++
