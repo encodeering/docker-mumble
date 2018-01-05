@@ -1,0 +1,32 @@
+diff --git a/library/murmur/Dockerfile b/library/murmur/Dockerfile
+index bb0dac4..2db64fe 100644
+--- a/library/murmur/Dockerfile
++++ b/library/murmur/Dockerfile
+@@ -1 +1 @@
+-FROM alpine:latest
++FROM alpine:3.7
+@@ -10,16 +10,4 @@ COPY ./docker-entrypoint.sh /usr/local/bin/
+-RUN apk --no-cache add \
+-        pwgen \
+-        libressl \
+-    && adduser -SDH murmur \
+-    && mkdir \
+-        /data \
+-        /opt \
+-        /var/run/murmur \
+-    && chown -R murmur:nobody \
+-        /var/run/murmur \
+-        /etc/murmur \
+-    && wget \
+-        https://github.com/mumble-voip/mumble/releases/download/${MURMUR_VERSION}/murmur-static_x86-${MURMUR_VERSION}.tar.bz2 -O - |\
+-        bzcat -f |\
+-        tar -x -C /opt -f - \
+-    && mv /opt/murmur* /opt/murmur
++RUN apk --no-cache add icu-libs murmur=1.2.19-r4 pwgen libressl \
++ && rm /etc/murmur.ini                                \
++ && mkdir -p               /data /var/run/murmur      \
++ && chown -R murmur:nobody /data /var/run/murmur /etc/murmur
+@@ -35,0 +24,3 @@ VOLUME ["/data/"]
++# Switch to murmur user
++USER murmur
++
