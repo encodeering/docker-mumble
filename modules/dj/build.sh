@@ -16,3 +16,5 @@ patch -p1 --no-backup-if-mismatch --directory="$PROJECT" < patch/Dockerfile.patc
 patch -p1 --no-backup-if-mismatch --directory="$PROJECT" < patch/Makefile.patch
 
 docker build -t "$DOCKER_IMAGE" "$PROJECT"
+
+docker run --rm "$DOCKER_IMAGE" -version
