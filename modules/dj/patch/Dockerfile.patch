@@ -16,7 +16,7 @@ index a73865b..8891e75 100644
 +# Final-Stage
 +FROM alpine:3.7
 +
-+RUN        apk add python ffmpeg opus aria2
++RUN        apk --no-cache add python ffmpeg opus aria2
 +
 +VOLUME     /root/.config/mumbledj/
 +
