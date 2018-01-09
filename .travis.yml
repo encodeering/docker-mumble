@@ -20,11 +20,10 @@ env:
     - ARCH="armhf" VERSION="1.2.19" VARIANT="murmur"
 
 install:
-- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.5
+- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.6
 
 before_script:
-- if [ $VARIANT = "dj"     ]; then sudo -E bash ./module.sh "." "./setup.sh" "https://github.com/matthieugrieger/mumbledj.git" "modules/$VARIANT/$PROJECT" "v$VERSION"; fi
-- if [ $VARIANT = "murmur" ]; then sudo -E bash ./module.sh "." "./setup.sh" "https://github.com/containerly/library.git"      "modules/$VARIANT/$PROJECT" "709de081c7c5505fa436cbf7290f32125e12ee06"; fi
+- sudo -E bash ./module.sh "." "./setup.sh"
 
 script:
 - sudo -E bash ./module.sh "modules/$VARIANT" "./build.sh"

@@ -1,0 +1,3 @@
+SCM_SOURCE=https://github.com/matthieugrieger/mumbledj.git
+SCM_TARGET=modules/$VARIANT/$PROJECT
+SCM_COMMIT=v$VERSION
