@@ -12,7 +12,6 @@ env:
     - secure: "ttII3KtIW84RQ6Zx0Tt1G8F1p2cr3x9qcppIGLaKO/HtXgPt6F1IpwZ6Uj5sVANwKfYzmHjZ5n5tqJUZUH2gNqdSSB8XI89ln/WRahJTRvG8l4u4HEI11VbAte6fHY1jRo3RU/nHJE1c5YdpFrV3fTmOlnB2FNvOIUmsElYkCzjzQPegfsniObJ1eEVNYwaimap/XFm1FiXci37MbIimwrvJJ1sZXhG1Dowo4Ik52QQytU4OGa51Sj5kEEnqj+dxndFL5F2X6k+NLL/1DBIXHykegimZUHtGL7dkfMwyBg1HkyPtNH3vwslCC4J2dCC9clJpfmpXVVCwuKcg/ujiH8mwo4Cgfl1p6BIU0+lueqilavszrf8cTKt06Hgr3Q0/qeqEvXhjiPqzPIEBltZbhNvOgKTXKvILuQD+VcVMvMCwqEUXmOJKZMUrdKVAnKXX0klqLTWgSa2PJE6WqL0sscMmQp+HEIDkAsc2YVI/1vpsvoAgLoBBRn2bncfTgbtsd0qbFVncG22c3tA+8Mt4WW8agTCG0gAwe568TVgh1Eb+WgfZKP8a3T5yHUVVdAu0GxRBErw9uLx4AFEkrKrhIcCFVYoKL20+m+xL9weyuZ3fftEFWvZ4eEXDQt0j2DASuBt05Lig+oWYo8X4lcE7MICyHwsc5BDBBJ2DtvKxpMs="
     - PROJECT="mumble"
     - REPOSITORY="encodeering"
-    - BRANCH="$TRAVIS_BRANCH"
   matrix:
     - ARCH="amd64" VERSION="3.2.1" VARIANT="dj"
     - ARCH="armhf" VERSION="3.2.1" VARIANT="dj"
@@ -20,7 +19,7 @@ env:
     - ARCH="armhf" VERSION="1.2.19" VARIANT="murmur"
 
 install:
-- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.7
+- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.8
 
 before_script:
 - sudo -E bash ./module.sh "." "./setup.sh"
