@@ -2,12 +2,12 @@ diff --git a/library/murmur/docker-entrypoint.sh b/library/murmur/docker-entrypo
 index 989cfe6..32c21aa 100755
 --- a/library/murmur/docker-entrypoint.sh
 +++ b/library/murmur/docker-entrypoint.sh
-@@ -86,2 +85,0 @@ fi
+@@ -86,1 +85,1 @@ fi
 -chown -R murmur:nobody /data/
--
++[ "$1" == "chown" ] && { echo "changing ownership"; chown -R murmur:nobody /data/; }
 @@ -94 +92 @@ if [[ ! -f /data/murmur.sqlite ]]; then
 -    /opt/murmur/murmur.x86 -ini "${CONFIGFILE}" -supw $SUPERUSER_PASSWORD
-+    murmurd -ini "${CONFIGFILE}" -supw $SUPERUSER_PASSWORD
++    su -s "/bin/bash" murmur -c "murmurd -ini "${CONFIGFILE}" -supw $SUPERUSER_PASSWORD"
 @@ -99 +97 @@ if [ -z ${DEBUG_MODE} ] || [ ! ${DEBUG_MODE} -eq 1 ]; then
 -    /opt/murmur/murmur.x86 -fg -ini "${CONFIGFILE}"
-+    murmurd -fg -ini "${CONFIGFILE}"
++    su -s "/bin/bash" murmur -c "murmurd -ini "${CONFIGFILE}" -fg"
