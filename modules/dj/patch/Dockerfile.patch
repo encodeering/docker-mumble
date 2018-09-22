@@ -2,27 +2,6 @@ diff --git a/Dockerfile b/Dockerfile
 index a73865b..8891e75 100644
 --- a/Dockerfile
 +++ b/Dockerfile
-@@ -1 +1 @@
--FROM alpine:3.3
-+FROM alpine:3.7
-@@ -5 +5 @@ ENV GOPATH=/
--RUN apk add --update ca-certificates go ffmpeg make build-base opus-dev python aria2
-+RUN apk add --update ca-certificates go ffmpeg make build-base opus-dev python aria2 wget
-@@ -15 +15 @@ WORKDIR /src/github.com/matthieugrieger/mumbledj
+@@ -16 +16 @@ WORKDIR /src/github.com/matthieugrieger/mumbledj
 -RUN make
 +RUN false; while [ $? -ne 0 ]; do killall -9 go; sleep 1; timeout -t 59 -s 9 make; done
-@@ -19,0 +20,13 @@ ENTRYPOINT ["/usr/local/bin/mumbledj"]
-+
-+# Final-Stage
-+FROM alpine:3.7
-+
-+RUN        apk --no-cache add python ffmpeg opus aria2
-+
-+VOLUME     /root/.config/mumbledj/
-+
-+COPY       --from=0 /bin/youtube-dl         /bin/youtube-dl
-+COPY       --from=0 /usr/local/bin/mumbledj /usr/local/bin/mumbledj
-+COPY       --from=0 /root/.config/mumbledj/ /root/.config/mumbledj/
-+
-+ENTRYPOINT ["/usr/local/bin/mumbledj"]
-\ No newline at end of file
