@@ -19,7 +19,7 @@ env:
     - BASE="alpine" ARCH="armhf" VERSION="1.2.19" VARIANT="murmur"
 
 install:
-- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.8
+- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.11
 
 before_script:
 - sudo -E bash ./module.sh "." "./setup.sh"
