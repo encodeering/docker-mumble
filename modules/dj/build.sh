@@ -11,4 +11,4 @@ docker-patch patch "$PROJECT"
 
 docker-build "$PROJECT"
 
-docker-verify -version
+docker-verify -version | dup | contains "v${VERSION}"

@@ -12,4 +12,4 @@ docker-patch patch "$PROJECT"
 docker-build "$PROJECT/library/murmur"
 
 docker-verify-config "--entrypoint murmurd"
-docker-verify -version
+docker-verify -version 2>&1 | dup | matches "${VERSION}\$"
