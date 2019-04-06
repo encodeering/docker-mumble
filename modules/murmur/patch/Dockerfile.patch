@@ -4,7 +4,7 @@ index bb0dac4..141b24c 100644
 +++ b/library/murmur/Dockerfile
 @@ -1 +1 @@
 -FROM alpine:latest
-+FROM alpine:3.7
++FROM alpine:3.9
 @@ -10,16 +10,7 @@ COPY ./docker-entrypoint.sh /usr/local/bin/
 -RUN apk --no-cache add \
 -        pwgen \
@@ -22,7 +22,7 @@ index bb0dac4..141b24c 100644
 -        bzcat -f |\
 -        tar -x -C /opt -f - \
 -    && mv /opt/murmur* /opt/murmur
-+RUN apk --no-cache add shadow icu-libs murmur=1.2.19-r4 pwgen libressl      \
++RUN apk --no-cache add shadow icu-libs murmur pwgen libressl      \
 + && rm /etc/murmur.ini /etc/init.d/murmur /etc/dbus-1/system.d/murmurd.conf \
 + && usermod  -u 1000 murmur \
 + && groupmod -g 1000 murmur \
