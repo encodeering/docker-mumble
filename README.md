@@ -18,17 +18,15 @@
 version: '3'
 services:
   murmur:
-    image: encodeering/mumble-amd64:1.2.19-murmur
+    image: encodeering/mumble-amd64:1.5.634-murmur
     volumes:
       - ./murmur:/data
     ports:
       - "64738:64738/tcp"
       - "64738:64738/udp"
     environment:
-      - MUMBLE_REGISTERPASSWORD=registersecret
-      - MUMBLE_SERVERPASSWORD=serversecret
-      - MUMBLE_ENABLESSL=0 # /data/cert.pem, /data/key.pem
-      - MUMBLE_SSLPASSPHRASE=---
+      - MUMBLE_CONFIG_SERVER_PASSWORD=serversecret
+      - MUMBLE_SUPERUSER_PASSWORD=superusersecret
   dj:
     image: encodeering/mumble-amd64:3.3.1-dj
     volumes:

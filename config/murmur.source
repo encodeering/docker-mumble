@@ -1,3 +1,3 @@
-SCM_SOURCE=https://github.com/containerly/library.git
+SCM_SOURCE=https://github.com/mumble-voip/mumble-docker
 SCM_TARGET=modules/$VARIANT/$PROJECT
-SCM_COMMIT=709de081c7c5505fa436cbf7290f32125e12ee06
+SCM_COMMIT=e61111bb84ef46a328a1570abe2b69245fe543d7
