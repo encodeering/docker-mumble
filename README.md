@@ -30,7 +30,7 @@ services:
       - MUMBLE_ENABLESSL=0 # /data/cert.pem, /data/key.pem
       - MUMBLE_SSLPASSPHRASE=---
   dj:
-    image: encodeering/mumble-amd64:3.3.0-dj
+    image: encodeering/mumble-amd64:3.3.1-dj
     volumes:
       - ./dj:/root/.cache/mumbledj
     command: [
