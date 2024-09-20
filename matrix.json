@@ -1,0 +1,10 @@
+{
+    "concourse": {
+        "dind": "0.1.17"
+    },
+    "platforms": ["amd64", "armhf"],
+    "pipelines": [
+        { "project": "mumble", "base": "alpine", "version": "3.3.1",   "variant": "dj"     },
+        { "project": "mumble", "base": "debian", "version": "1.5.634", "variant": "murmur" }
+    ]
+}

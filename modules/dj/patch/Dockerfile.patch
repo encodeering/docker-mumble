@@ -1,7 +1,0 @@
-diff --git a/Dockerfile b/Dockerfile
-index a73865b..8891e75 100644
---- a/Dockerfile
-+++ b/Dockerfile
-@@ -16 +16 @@ WORKDIR /src/github.com/matthieugrieger/mumbledj
--RUN make
-+RUN false; while [ $? -ne 0 ]; do killall -9 go; sleep 1; timeout -t 59 -s 9 make; done
